@@ -80,12 +80,15 @@ body {
 h1{
     margin: 0;
     padding: 2rem;
+    text-align: center;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 4rem;
     font-weight: bold;
+    padding: 20px;
 }
+
 .footer {
     width: 100%;
 }
