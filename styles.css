@@ -13,9 +13,10 @@ body {
     font-size: 3rem;
 }
 
-.navbar {
+header nav.navbar {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
     padding: 20px;
     font-weight: bold;
     position: sticky;
@@ -29,6 +30,9 @@ body {
     color: black;
     font-size: 4rem;
 }
+
+header nav.navbar a:hover {
+    text-decoration: underline;
 
 .hero {
     text-align: center;
