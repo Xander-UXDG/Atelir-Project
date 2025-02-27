@@ -27,3 +27,14 @@ anime({
     duration: 8000,
     loop: true
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    anime({
+        targets: ".vertical-carousel",
+        translateY: ["0%", "-100%"],
+        easing: "linear",
+        duration: 10000,
+        loop: true
+    });
+});
+
