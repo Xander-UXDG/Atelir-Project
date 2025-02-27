@@ -136,7 +136,7 @@ h2 {
 
 .carousel-container {
     overflow: hidden; /* Prevents images from spilling out */
-    width: 100vw; /* Ensures it fits the screen */
+    width: auto; /* Ensures it fits the screen */
     display: flex;
     justify-content: center;
     position: relative;
