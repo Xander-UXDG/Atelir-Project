@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         targets: ".vertical-carousel",
         translateY: ["0%", "-100%"],
         easing: "linear",
-        duration: 6000,
+        duration: 5000,
         loop: true
     });
 });
