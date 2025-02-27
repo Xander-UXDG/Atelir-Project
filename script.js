@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("gallery.html", function () {
+
 const carousel = document.querySelector('.carousel');
 const images = Array.from(carousel.children);
 const imgWidth = images[0].offsetWidth; 
@@ -26,6 +26,4 @@ anime({
     easing: 'linear',
     duration: 8000,
     loop: true
-});
-
 });
