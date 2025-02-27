@@ -135,8 +135,8 @@ h2 {
 }
 
 .carousel-container {
-    overflow: hidden; /* Prevents images from spilling out */
-    width: auto; /* Ensures it fits the screen */
+    overflow: hidden; 
+    width: auto; 
     display: flex;
     justify-content: center;
     position: relative;
@@ -145,8 +145,8 @@ h2 {
 .carousel {
     display: flex;
     gap: 20px;
-    white-space: nowrap; /* Ensures images stay in a row */
-    width: max-content; /* Ensures content resizes properly */
+    white-space: nowrap; 
+    width: max-content; 
 }
 
 @media (min-width: 768px) {
