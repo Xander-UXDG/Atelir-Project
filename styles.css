@@ -114,6 +114,27 @@ h2 {
     text-decoration: underline;
 }
 
+.vertical-carousel-container {
+    width: 200px; /* Adjust as needed */
+    height: 400px; /* Defines the visible area */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.vertical-carousel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.vertical-carousel img {
+    width: 100%;
+    height: auto;
+}
+
+
 @media (min-width: 768px) {
     .footer-top {
         flex-direction: row;
