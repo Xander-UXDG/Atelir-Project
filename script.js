@@ -15,7 +15,7 @@ images.forEach(img => {
     carousel.appendChild(clone);
 });
 
-carousel.style.width = `${imgWidth * totalImages * 2}px`;
+carousel.style.width = `${imgWidth * totalImages}px`;
 carousel.style.left = "50%"; 
 carousel.style.transform = "translateX(-50%)"; 
 
