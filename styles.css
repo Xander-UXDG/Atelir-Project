@@ -115,8 +115,8 @@ h2 {
 }
 
 .vertical-carousel-container {
-    width: 200px; /* Adjust as needed */
-    height: 400px; /* Defines the visible area */
+    width: 200px;
+    height: 400px; 
     overflow: hidden;
     display: flex;
     justify-content: center;
