@@ -164,6 +164,7 @@ h2 {
     display: flex;
     justify-content: center;
     position: relative;
+    height: 337px;
 }
 
 .carousel {
