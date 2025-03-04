@@ -30,6 +30,10 @@ body {
     font-size: 4rem;
 }
 
+.navbar a:hover{
+    color:#b8860b;
+}
+
 .hero {
     text-align: center;
     padding: 100px 20px;
