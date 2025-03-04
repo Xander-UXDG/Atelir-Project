@@ -12,7 +12,6 @@ window.onload = function () {
 const carousel = document.querySelector('.carousel');
 const images = Array.from(carousel.children);
 const imgWidth = images[0].offsetWidth; 
-const imageHeight = images[0].offsetHeight;
 const totalImages = images.length;
 
 images.forEach(img => {
@@ -34,12 +33,24 @@ anime({
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+    const verticalCarousel = document.querySelector(".vertical-carousel");
+    const images = Array.from(verticalCarousel.children);
+    const totalImages = images.length;
+
+    images.forEach(img => {
+        let clone = img.cloneNode(true);
+        verticalCarousel.appendChild(clone);
+    });
+
+    const imageHeight = images[0].offsetHeight;
+    const totalHeight = imageHeight * totalImages;
+
     anime({
         targets: ".vertical-carousel",
-        translateY: ["0px",  `-${imageHeight * totalImages}px`],
+        translateY: [0, -totalHeight],
         easing: "linear",
         duration: 8000,
-        loop: true
+        loop: true,
     });
 });
 
