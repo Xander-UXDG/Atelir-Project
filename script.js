@@ -12,6 +12,7 @@ window.onload = function () {
 const carousel = document.querySelector('.carousel');
 const images = Array.from(carousel.children);
 const imgWidth = images[0].offsetWidth; 
+const imageHeight = images[0].offsetHeight;
 const totalImages = images.length;
 
 images.forEach(img => {
@@ -35,9 +36,9 @@ anime({
 document.addEventListener("DOMContentLoaded", function () {
     anime({
         targets: ".vertical-carousel",
-        translateY: ["0%", "-100%"],
+        translateY: ["0px",  `-${imageHeight * totalImages}px`],
         easing: "linear",
-        duration: 4000,
+        duration: 8000,
         loop: true
     });
 });

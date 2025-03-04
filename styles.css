@@ -140,9 +140,8 @@ h2 {
 
 .vertical-carousel-container {
     width: 200px; /* Adjust as needed */
-    height: fit-content; /* Defines the visible area */
+    height: 500px; /* Defines the visible area */
     overflow: hidden;
-    display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -151,11 +150,13 @@ h2 {
 .vertical-carousel {
     display: flex;
     flex-direction: column;
+    width: 100%;
     gap: 20px;
 }
 .vertical-carousel img {
     width: 100%;
     height: auto;
+    display: block;
 }
 
 .carousel-container {
