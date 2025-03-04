@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+window.onload = function () {
+    setTimeout (() => {
+        document.getElementById("hero-active").style.opacity = "1"; }, 2000);
+};
 
 const carousel = document.querySelector('.carousel');
 const images = Array.from(carousel.children);
