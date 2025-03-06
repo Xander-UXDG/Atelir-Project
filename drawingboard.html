@@ -7,12 +7,6 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=FK+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <script src="script.js"></script>
-    <style>
-        canvas {
-            touch-action: none;
-        }
-    </style>
 </head>
 <body class="artboard">
     <nav class="header">
@@ -41,3 +35,94 @@
             </div>
         </div>
     </div>
+    <script>
+        let canvas;
+        let currentColor = document.getElementById('colorPicker').value;
+        let currentLineWidth = document.getElementById('lineWidth').value;
+        let history = [];
+
+        function setup() {
+            canvas = createCanvas(windowWidth - 350, windowHeight - 64);
+            canvas.parent('canvasContainer');
+            background(255);
+        }
+
+        function draw() {
+            if (mouseIsPressed) {
+                stroke(currentColor);
+                strokeWeight(currentLineWidth);
+                line(pmouseX, pmouseY, mouseX, mouseY);
+            }
+        }
+
+        document.getElementById('colorPicker').addEventListener('input', (e) => {
+            currentColor = e.target.value;
+        });
+
+        document.getElementById('lineWidth').addEventListener('input', (e) => {
+            currentLineWidth = e.target.value;
+        });
+
+        function clearCanvas() {
+            background(255);
+            history = [];
+        }
+
+        function undo() {
+            if (history.length > 0) {
+                history.pop();
+                background(255);
+                for (let img of history) {
+                    image(img, 0, 0);
+                }
+            }
+        }
+
+        function saveState() {
+            history.push(get());
+        }
+
+        function mousePressed() {
+            saveState();
+        }
+
+        function downloadImage() {
+            saveCanvas(canvas, 'drawing', 'png');
+        }
+
+        function uploadImage() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const img = loadImage(event.target.result, () => {
+                        image(img, 0, 0, width, height);
+                        saveState();
+                    });
+                };
+                reader.readAsDataURL(file);
+            };
+            input.click();
+        }
+
+        function generatePrompt() {
+            const prompts = [
+                'portrait of lady near a cobblestone wall',
+                'sunset over a mountain range',
+                'a cat sitting on a windowsill',
+                'a bustling city street',
+                'a serene beach scene'
+            ];
+            const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+            document.getElementById('prompt').innerText = randomPrompt;
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth - 350, windowHeight - 64);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
