@@ -54,3 +54,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+function generatePrompt() {
+    const prompts = [
+        'portrait of lady near a cobblestone wall',
+        'sunset over a mountain range',
+        'a cat sitting on a windowsill',
+        'a bustling city street',
+        'a serene beach scene'
+    ];
+    const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+    document.getElementById('prompt').innerText = randomPrompt;
+}
+
