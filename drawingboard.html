@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtBoard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=FK+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        canvas {
+            touch-action: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="header">
+        <a href="index.html">HOME</a>
+        <div class="prompt-container">
+            <span id="prompt">portrait of lady near a cobblestone wall</span>
+            <i class="fas fa-sync-alt" onclick="generatePrompt()"></i>
+        </div>
+    </nav>
+    <div class="main-container">
+        <div class="canvas-container" id="canvasContainer"></div>
+        <div class="sidebar">
+            <div>
+                <h2>COLOUR PICKER</h2>
+                <input type="color" id="colorPicker" value="#0000ff">
+            </div>
+            <div>
+                <h2>LINE WIDTH</h2>
+                <input type="number" id="lineWidth" value="5" min="1" max="100">
+            </div>
+            <button class="clear-btn" onclick="clearCanvas()">CLEAR</button>
+            <button class="undo-btn" onclick="undo()">UNDO</button>
+            <div class="icon-container">
+                <i class="fas fa-download" onclick="downloadImage()"></i>
+                <i class="fas fa-upload" onclick="uploadImage()"></i>
+            </div>
+        </div>
+    </div>
