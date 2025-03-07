@@ -137,7 +137,13 @@ h2 {
 .footer-bottom a:hover {
     text-decoration: underline;
 }
-
+.vertical-carousel-wrapper {
+    display: flex; /* Arrange them in a row */
+    justify-content: space-between; /* Space them evenly */
+    align-items: center;
+    width: 90%; /* Ensures it fits the screen properly */
+    margin: 50px auto; /* Centers it with spacing */
+}
 .vertical-carousel-container {
     width: 200px; /* Adjust as needed */
     height: 500px; /* Defines the visible area */
@@ -153,6 +159,7 @@ h2 {
     flex-direction: column;
     width: 100%;
     gap: 20px;
+    position: absolute;
 }
 .vertical-carousel img {
     width: 100%;

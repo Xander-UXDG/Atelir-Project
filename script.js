@@ -17,6 +17,7 @@ const totalImages = images.length;
 images.forEach(img => {
     let clone = img.cloneNode(true);
     carousel.appendChild(clone);
+    
 });
 
 carousel.style.width = `${imgWidth * totalImages}px`;
@@ -40,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     images.forEach(img => {
         let clone = img.cloneNode(true);
         verticalCarousel.appendChild(clone);
+        
     });
 
     const imageHeight = images[0].offsetHeight;
@@ -53,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
         loop: true,
     });
 });
+
 
 function generatePrompt() {
     const prompts = [
