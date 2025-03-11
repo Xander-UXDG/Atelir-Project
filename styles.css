@@ -47,6 +47,7 @@ font-family: 'Miles', serif;
     position:relative;
     width: 100%;
     height: 458px;
+    top: -100px;
 }
 .hero-container img {
     width: 100%;
@@ -89,6 +90,11 @@ font-family: 'Miles', serif;
     margin-top: 20px;
     transition: background-color 0.3s ease;
     border-radius: 39px;
+    position: absolute;
+    z-index: 2;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .draw-button:hover {
