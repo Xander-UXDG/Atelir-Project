@@ -69,6 +69,10 @@ font-family: 'Miles', serif;
     font-weight: bold;
     }
 
+.hero .prompt-create-display{
+    font-size: 2rem;
+}
+
 .title {
     font-size: 20rem;
     font-family: 'Miles', serif;
