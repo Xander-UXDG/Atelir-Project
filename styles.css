@@ -20,18 +20,18 @@ body {
     font-weight: bold;
     position: sticky;
     top: 0;
-    background-color: #ffffff;
+    background-color: #2B2B2B;
     z-index: 1000;
 }
 
 .navbar a {
     text-decoration: none;
-    color: black;
+    color: white;
     font-size: 4rem;
 }
 
 .navbar a:hover{
-    color:#b8860b;
+    color: #C7DFF7;
 }
 
 .hero {
@@ -81,9 +81,10 @@ font-family: 'Miles', serif;
 /*test*/
 .draw-button {
     padding: 10px 20px;
-    font-size: 4rem;
-    border: 2px solid black;
-    background: none;
+    font-size: 3rem;
+    border: none;
+    color: white;
+    background-color: #4169e1;
     cursor: pointer;
     margin-top: 20px;
     transition: background-color 0.3s ease;
@@ -91,7 +92,8 @@ font-family: 'Miles', serif;
 }
 
 .draw-button:hover {
-    background-color: #b8860b;
+    background-color: #2253e8;
+    color: black;
 }
 
 .content {
@@ -116,23 +118,23 @@ h2 {
     width: 100%;
 }
 .footer-top {
-    background-color: #b8860b;
+    background-color: #4169e1;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: black;
+    color: white;
 }
 .footer-top div {
     margin-bottom: 20px;
 }
 .footer-bottom {
-    background-color: #006666;
+    background-color: #C7DFF7;
     padding: 10px;
     display: flex;
     justify-content: space-around;
-    color: black;
+    color: white;
 }
 .footer-bottom a {
     color: black;
