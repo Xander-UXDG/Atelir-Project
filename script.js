@@ -34,25 +34,27 @@ anime({
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const verticalCarousel = document.querySelector(".vertical-carousel");
-    const images = Array.from(verticalCarousel.children);
-    const totalImages = images.length;
+    const verticalCarousels = document.querySelectorAll(".vertical-carousel");
 
-    images.forEach(img => {
-        let clone = img.cloneNode(true);
-        verticalCarousel.appendChild(clone);
-        
-    });
+    verticalCarousels.forEach(verticalCarousel => {
+        const images = Array.from(verticalCarousel.children);
+        const totalImages = images.length;
 
-    const imageHeight = images[0].offsetHeight;
-    const totalHeight = imageHeight * totalImages;
+        images.forEach(img => {
+            let clone = img.cloneNode(true);
+            verticalCarousel.appendChild(clone);
+        });
 
-    anime({
-        targets: ".vertical-carousel",
-        translateY: [0, -totalHeight],
-        easing: "linear",
-        duration: 8000,
-        loop: true,
+        const imageHeight = images[0].offsetHeight;
+        const totalHeight = imageHeight * totalImages;
+
+        anime({
+            targets: verticalCarousel,
+            translateY: [0, -totalHeight],
+            easing: "linear",
+            duration: 8000,
+            loop: true,
+        });
     });
 });
 
