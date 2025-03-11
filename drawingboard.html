@@ -90,24 +90,6 @@
             saveCanvas(canvas, 'drawing', 'png');
         }
 
-        function uploadImage() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.onchange = (e) => {
-                const file = e.target.files[0];
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    const img = loadImage(event.target.result, () => {
-                        image(img, 0, 0, width, height);
-                        saveState();
-                    });
-                };
-                reader.readAsDataURL(file);
-            };
-            input.click();
-        }
-
         function generatePrompt() {
             const prompts = [
                 'portrait of lady near a cobblestone wall',
