@@ -27,6 +27,7 @@
                 <h2>LINE WIDTH</h2>
                 <input type="number" id="lineWidth" value="5" min="1" max="100">
             </div>
+            <button class="eraser-btn" onclick="useEraser()">ERASER</button>
             <button class="clear-btn" onclick="clearCanvas()">CLEAR</button>
             <button class="undo-btn" onclick="undo()">UNDO</button>
             <div class="icon-container">
@@ -40,6 +41,7 @@
         let currentColor = document.getElementById('colorPicker').value;
         let currentLineWidth = document.getElementById('lineWidth').value;
         let history = [];
+        let erasing = false;
 
         function setup() {
             canvas = createCanvas(windowWidth - 350, windowHeight - 64);
@@ -49,7 +51,7 @@
 
         function draw() {
             if (mouseIsPressed) {
-                stroke(currentColor);
+                stroke(erasing ? 255 : currentColor);
                 strokeWeight(currentLineWidth);
                 line(pmouseX, pmouseY, mouseX, mouseY);
             }
@@ -89,6 +91,15 @@
         function downloadImage() {
             saveCanvas(canvas, 'drawing', 'png');
         }
+
+        function useEraser() {
+            erasing = !erasing;
+            if (erasing) {
+                stroke(255);
+                    } else{
+                        stroke(currentColor);
+                    }
+                }
 
         function generatePrompt() {
             const prompts = [
