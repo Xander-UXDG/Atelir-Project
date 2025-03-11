@@ -1,110 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArtBoard</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=FK+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArtBoard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=FK+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 <body class="artboard">
-    <nav class="header">
-        <a href="index.html">HOME</a>
-        <div class="prompt-container">
-            <span id="prompt">portrait of lady near a cobblestone wall</span>
-            <i class="fas fa-sync-alt" onclick="generatePrompt()"></i>
-        </div>
-    </nav>
-    <div class="main-container">
-        <div class="canvas-container" id="canvasContainer"></div>
-        <div class="sidebar">
-            <div>
-                <h2>COLOUR PICKER</h2>
-                <input type="color" id="colorPicker" value="#0000ff">
-            </div>
-            <div>
-                <h2>LINE WIDTH</h2>
-                <input type="number" id="lineWidth" value="5" min="1" max="100">
-            </div>
-            <button class="clear-btn" onclick="clearCanvas()">CLEAR</button>
-            <button class="undo-btn" onclick="undo()">UNDO</button>
-            <div class="icon-container">
-                <i class="fas fa-download" onclick="downloadImage()"></i>
-                <i class="fas fa-upload" onclick="uploadImage()"></i>
-            </div>
-        </div>
+  <nav class="header">
+    <a href="index.html">HOME</a>
+    <div class="prompt-container">
+      <span id="prompt">portrait of lady near a cobblestone wall</span>
+      <i class="fas fa-sync-alt" onclick="generatePrompt()"></i>
     </div>
-    <script>
-        let canvas;
-        let currentColor = document.getElementById('colorPicker').value;
-        let currentLineWidth = document.getElementById('lineWidth').value;
-        let history = [];
-
-        function setup() {
-            canvas = createCanvas(windowWidth - 350, windowHeight - 64);
-            canvas.parent('canvasContainer');
-            background(255);
+  </nav>
+  <div class="main-container">
+    <div class="canvas-container" id="canvasContainer"></div>
+    <div class="sidebar">
+      <div>
+        <h2>COLOUR PICKER</h2>
+        <input type="color" id="colorPicker" value="#0000ff" />
+      </div>
+      <div>
+        <h2>LINE WIDTH</h2>
+        <input type="number" id="lineWidth" value="5" min="1" max="100" />
+      </div>
+      <button class="clear-btn" onclick="clearCanvas()">CLEAR</button>
+      <button class="undo-btn" onclick="undo()">UNDO</button>
+      <div class="icon-container">
+        <i class="fas fa-download" onclick="downloadImage()"></i>
+        <i class="fas fa-upload" onclick="uploadImage()"></i>
+      </div>
+    </div>
+  </div>
+  <script>
+    let canvas;
+    let strokes = [];
+    let currentStroke = [];
+    let currentColor = document.getElementById('colorPicker').value;
+    let currentLineWidth = document.getElementById('lineWidth').value;
+    
+    function setup() {
+      canvas = createCanvas(windowWidth - 350, windowHeight - 64);
+      canvas.parent('canvasContainer');
+      background(255);
+    }
+    
+    function draw() { }
+    
+    document.getElementById('colorPicker').addEventListener('input', (e) => {
+      currentColor = e.target.value;
+    });
+    
+    document.getElementById('lineWidth').addEventListener('input', (e) => {
+      currentLineWidth = e.target.value;
+    });
+    
+    function clearCanvas() {
+      background(255);
+      strokes = [];
+    }
+    
+    function undo() {
+      if (strokes.length > 0) {
+        strokes.pop();
+        background(255);
+        for (let strokeData of strokes) {
+          for (let seg of strokeData) {
+            stroke(seg.color);
+            strokeWeight(seg.weight);
+            line(seg.px, seg.py, seg.x, seg.y);
+          }
         }
-
-        function draw() {
-            if (mouseIsPressed) {
-                stroke(currentColor);
-                strokeWeight(currentLineWidth);
-                line(pmouseX, pmouseY, mouseX, mouseY);
-            }
-        }
-
-        document.getElementById('colorPicker').addEventListener('input', (e) => {
-            currentColor = e.target.value;
-        });
-
-        document.getElementById('lineWidth').addEventListener('input', (e) => {
-            currentLineWidth = e.target.value;
-        });
-
-        function clearCanvas() {
-            background(255);
-            history = [];
-        }
-
-        function undo() {
-            if (history.length > 0) {
-                history.pop();
-                background(255);
-                for (let img of history) {
-                    image(img, 0, 0);
-                }
-            }
-        }
-
-        function saveState() {
-            history.push(get());
-        }
-
-        function mousePressed() {
-            saveState();
-        }
-
-        function downloadImage() {
-            saveCanvas(canvas, 'drawing', 'png');
-        }
-
-        function generatePrompt() {
-            const prompts = [
-                'portrait of lady near a cobblestone wall',
-                'sunset over a mountain range',
-                'a cat sitting on a windowsill',
-                'a bustling city street',
-                'a serene beach scene'
-            ];
-            const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
-            document.getElementById('prompt').innerText = randomPrompt;
-        }
-
-        function windowResized() {
-            resizeCanvas(windowWidth - 350, windowHeight - 64);
-        }
-    </script>
-    <script src="script.js"></script>
+      }
+    }
+    
+    function mousePressed() {
+      currentStroke = [];
+    }
+    
+    function mouseDragged() {
+      let segment = {
+        x: mouseX,
+        y: mouseY,
+        px: pmouseX,
+        py: pmouseY,
+        color: currentColor,
+        weight: currentLineWidth
+      };
+      currentStroke.push(segment);
+      stroke(currentColor);
+      strokeWeight(currentLineWidth);
+      line(pmouseX, pmouseY, mouseX, mouseY);
+    }
+    
+    function mouseReleased() {
+      if (currentStroke.length > 0) {
+        strokes.push(currentStroke);
+      }
+    }
+    
+   
+    function downloadImage() {
+      saveCanvas(canvas, 'drawing', 'png');
+    }
+    
+    
+    function uploadImage() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.onchange = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          loadImage(event.target.result, (img) => {
+            image(img, 0, 0, width, height);
+          });
+        };
+        reader.readAsDataURL(file);
+      };
+      input.click();
+    }
+    
+   
+    function generatePrompt() {
+      const prompts = [
+        'portrait of lady near a cobblestone wall',
+        'sunset over a mountain range',
+        'a cat sitting on a windowsill',
+        'a bustling city street',
+        'a serene beach scene'
+      ];
+      const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+      document.getElementById('prompt').innerText = randomPrompt;
+    }
+    
+ 
+    function windowResized() {
+      resizeCanvas(windowWidth - 350, windowHeight - 64);
+    }
+  </script>
 </body>
+</html>
