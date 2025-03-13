@@ -311,18 +311,18 @@ h2 {
     font-size: 100px;
     cursor: pointer;
 }
-
+/* Artboard Styling */
 .artboard{
     height: 100vh;
     overflow: hidden;
     margin: 0;
     padding: 0;
 }
-
+/* Eraser Button */
 .eraser-btn{
     background-color: grey;
 }
-
+/* Responsive Design */
 @media (min-width: 768px) {
     .footer-top {
         flex-direction: row;
