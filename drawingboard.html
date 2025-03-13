@@ -105,18 +105,7 @@
                         stroke(currentColor);
                     }
                 }
-       // Generates a new random prompt
-        function generatePrompt() {
-            const prompts = [
-                'portrait of lady near a cobblestone wall',
-                'sunset over a mountain range',
-                'a cat sitting on a windowsill',
-                'a bustling city street',
-                'a serene beach scene'
-            ];
-            const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
-            document.getElementById('prompt').innerText = randomPrompt;
-        }
+
  // Resize the canvas when the window size changes
         function windowResized() {
             resizeCanvas(windowWidth - 350, windowHeight - 64);

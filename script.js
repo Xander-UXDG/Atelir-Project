@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const imageHeight = images[0].offsetHeight;
          // Calculates the total height of the carousel
         const totalHeight = imageHeight * totalImages;
-        
+
         // Uses Anime.js to animate the vertical carousel, making it scroll infinitely from top to bottom
         anime({
             targets: verticalCarousel,
@@ -77,15 +77,31 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function generatePrompt() {
-    const prompts = [
-        'portrait of lady near a cobblestone wall',
-        'sunset over a mountain range',
-        'a cat sitting on a windowsill',
-        'a bustling city street',
-        'a serene beach scene'
-    ];
-    const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
-    document.getElementById('prompt').innerText = randomPrompt;
-}
+       // Generates a new random prompt
+        function generatePrompt() {
+            const prompts = [
+                'portrait of lady near a cobblestone wall',
+                'sunset over a mountain range',
+                'a cat sitting on a windowsill',
+                'a bustling city street',
+                'a serene beach scene',
+                'man reading under a tree',
+                'futuristic cityscape at night',
+                'a dog sitting',
+                'dancer mid-spin',
+                'abandoned carnival ride',
+                'robot discovering nature',
+                'old man with a mysterious map',
+                'neon-lit cyberpunk alley',
+                'girl holding an umbrella in the rain',
+                'magical forest glowing at dusk',
+                'crow perched on a skull',
+                'astronaut floating in space',
+                'child flying a kite on a hill',
+                'knight resting by a campfire',
+                'fish swimming through the clouds'
+            ];
+            const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+            document.getElementById('prompt').innerText = randomPrompt;
+        }
 
