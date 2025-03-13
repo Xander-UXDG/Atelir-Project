@@ -6,7 +6,7 @@ body {
     flex-direction: column; 
     min-height: 100vh; /* Ensures full height coverage */
     padding: 0;
-    background-color: #ffffff; /* background */
+    background-color: #F5F5F5 ; /* background */
     color: #000000; /* text color */
 }
 
@@ -89,9 +89,9 @@ font-family: 'Miles', serif;
 .draw-button {
     padding: 10px 20px;
     font-size: 3rem;
-    border: none;
-    color: white;
-    background-color: #4169e1;
+    border: 3px solid black;
+    color: black;
+    background-color: white;
     cursor: pointer;
     margin-top: 20px;
     transition: background-color 0.3s ease; /* Smooth transition */
@@ -105,7 +105,7 @@ font-family: 'Miles', serif;
 
 .draw-button:hover {
     background-color: #2253e8; /* Darker blue on hover */
-    color: black;
+    color: white;
 }
 /* Content Container */
 .content {
