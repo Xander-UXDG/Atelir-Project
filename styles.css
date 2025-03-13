@@ -63,7 +63,8 @@ font-family: 'Miles', serif;
 /* Hero Section Image Animation */
 #hero-active {
     opacity: 0; /* Initially hidden */
-    width: 1500px;
+    max-width: 1500px;
+    width: 100vw;
     height: auto;
     transition: opacity 1s ease-in-out; /* Fades in */
 }
