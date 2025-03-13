@@ -9,27 +9,31 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 <body class="artboard">
+        <!-- Navigation bar -->
     <nav class="header">
         <a href="index.html">HOME</a>
         <div class="prompt-container">
-            <span id="prompt">portrait of lady near a cobblestone wall</span>
-            <i class="fas fa-sync-alt" onclick="generatePrompt()"></i>
+            <span id="prompt">portrait of lady near a cobblestone wall</span> <!-- Default prompt -->
+            <i class="fas fa-sync-alt" onclick="generatePrompt()"></i>  <!-- Button to generate a new prompt -->
         </div>
     </nav>
     <div class="main-container">
+                <!-- Canvas container for drawing -->
         <div class="canvas-container" id="canvasContainer"></div>
+         <!-- Sidebar with drawing tools -->
         <div class="sidebar">
             <div>
-                <h2>COLOUR PICKER</h2>
+                <h2>COLOUR PICKER</h2> <!-- Color picker for brush color -->
                 <input type="color" id="colorPicker" value="#0000ff">
             </div>
             <div>
                 <h2>LINE WIDTH</h2>
-                <input type="number" id="lineWidth" value="5" min="1" max="100">
+                <input type="number" id="lineWidth" value="5" min="1" max="100"> <!-- Input to adjust brush size -->
             </div>
-            <button class="eraser-btn" onclick="useEraser()">ERASER</button>
-            <button class="clear-btn" onclick="clearCanvas()">CLEAR</button>
-            <button class="undo-btn" onclick="undo()">UNDO</button>
+            <button class="eraser-btn" onclick="useEraser()">ERASER</button> <!-- Button to switch to eraser -->
+            <button class="clear-btn" onclick="clearCanvas()">CLEAR</button>  <!-- Button to clear canvas -->
+            <button class="undo-btn" onclick="undo()">UNDO</button> <!-- Button to undo last action -->
+                        <!-- Icons for downloading and uploading drawings -->
             <div class="icon-container">
                 <i class="fas fa-download" onclick="downloadImage()"></i>
                 <i class="fas fa-upload" onclick="uploadImage()"></i>
@@ -37,62 +41,62 @@
         </div>
     </div>
     <script>
-        let canvas;
-        let currentColor = document.getElementById('colorPicker').value;
-        let currentLineWidth = document.getElementById('lineWidth').value;
-        let history = [];
-        let erasing = false;
-
+        let canvas; // Holds the p5.js canvas
+        let currentColor = document.getElementById('colorPicker').value; // Stores the selected color
+        let currentLineWidth = document.getElementById('lineWidth').value; // Stores the selected line width
+        let history = []; // Stores previous states for undo functionality
+        let erasing = false;  // Flag variable to track if eraser is active or not
+// Setup function runs once when the page loads
         function setup() {
-            canvas = createCanvas(windowWidth - 350, windowHeight - 64);
-            canvas.parent('canvasContainer');
-            background(255);
+            canvas = createCanvas(windowWidth - 350, windowHeight - 64); // Create a canvas based on window size
+            canvas.parent('canvasContainer'); // Attach canvas to the div with ID 'canvasContainer'
+            background(255); // Set background to white
         }
-
+ // Draw function runs continuously in p5.js
         function draw() {
-            if (mouseIsPressed) {
-                stroke(erasing ? 255 : currentColor);
-                strokeWeight(currentLineWidth);
-                line(pmouseX, pmouseY, mouseX, mouseY);
+            if (mouseIsPressed) { // Check if the mouse is being pressed
+                stroke(erasing ? 255 : currentColor); // Set stroke color based on eraser mode
+                strokeWeight(currentLineWidth); // Set stroke weight
+                line(pmouseX, pmouseY, mouseX, mouseY); // Draw line from previous mouse position to current position
             }
         }
-
+// Event listener to update brush color and disable eraser mode when color is picked
         document.getElementById('colorPicker').addEventListener('input', (e) => {
             currentColor = e.target.value;
-            erasing = false;
+            erasing = false; // Disable eraser when selecting a new color
         });
-
+// Event listener to update line width when input changes
         document.getElementById('lineWidth').addEventListener('input', (e) => {
             currentLineWidth = e.target.value;
         });
-
+      // Clears the entire canvas
         function clearCanvas() {
-            background(255);
-            history = [];
+            background(255); // Reset to white background
+            history = []; // Clear history
         }
-
+ // Undo function to revert to the previous state
         function undo() {
-            if (history.length > 0) {
-                history.pop();
-                background(255);
-                for (let img of history) {
+            if (history.length > 0) { // Check if there's history to undo
+                history.pop(); // Remove last saved state
+                background(255); // Clear canvas- resets to white
+                for (let img of history) { // Redraw previous states
                     image(img, 0, 0);
                 }
             }
         }
-
+// Save the current canvas state before making changes
         function saveState() {
             history.push(get());
         }
-
+// Save canvas state when mouse is pressed
         function mousePressed() {
             saveState();
         }
-
+// Download canvas as an image
         function downloadImage() {
             saveCanvas(canvas, 'drawing', 'png');
         }
-
+        // Toggle eraser mode
         function useEraser() {
             erasing = !erasing;
             if (erasing) {
@@ -101,7 +105,7 @@
                         stroke(currentColor);
                     }
                 }
-
+       // Generates a new random prompt
         function generatePrompt() {
             const prompts = [
                 'portrait of lady near a cobblestone wall',
@@ -113,11 +117,11 @@
             const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
             document.getElementById('prompt').innerText = randomPrompt;
         }
-
+ // Resize the canvas when the window size changes
         function windowResized() {
             resizeCanvas(windowWidth - 350, windowHeight - 64);
         }
     </script>
-    <script src="script.js"></script>
+    <script src="script.js"></script> <!-- Link to an external script file -->
 </body>
 </html>
