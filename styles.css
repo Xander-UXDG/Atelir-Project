@@ -1,27 +1,28 @@
+/* General Styles */
 body {
-    font-family: 'FK Grotesk', sans-serif;
+    font-family: 'FK Grotesk', sans-serif; /* Sets the primary font */
     margin: 0;
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    flex-direction: column; 
+    min-height: 100vh; /* Ensures full height coverage */
     padding: 0;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #ffffff; /* background */
+    color: #000000; /* text color */
 }
 
 .content p{
-    font-size: 3rem;
+    font-size: 3rem; /* Large font size for content paragraphs */
 }
-
+/* Navigation Bar */
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Spreads out navigation items */
     padding: 20px;
     font-weight: bold;
-    position: sticky;
+    position: sticky; /* Sticks to the top of the page */
     top: 0;
-    background-color: #2B2B2B;
-    z-index: 1000;
+    background-color: #2B2B2B; /* Dark background */
+    z-index: 1000; /* Ensures navbar stays above other elements */
 }
 
 .navbar a {
@@ -31,14 +32,15 @@ body {
 }
 
 .navbar a:hover{
-    color: #C7DFF7;
+    color: #C7DFF7; /* Changes color when hovered */
 }
 
+/* Hero Section */
 .hero {
     text-align: center;
     padding: 100px 20px;
 }
-
+/* Custom font for prompt display */
 .hero .prompt-create-display{
 font-family: 'Miles', serif;
 
@@ -47,7 +49,7 @@ font-family: 'Miles', serif;
     position:relative;
     width: 100%;
     height: 458px;
-    top: -100px;
+    top: -100px; /* Adjusts position */
 }
 .hero-container img {
     width: 100%;
@@ -55,16 +57,18 @@ font-family: 'Miles', serif;
     top: 0;
     left: 0;
     position: absolute;
-    object-fit: cover;
+    object-fit: cover; /* Ensures proper image scaling */
 }
 
+/* Hero Section Image Animation */
 #hero-active {
     opacity: 0; /* Initially hidden */
     width: 1500px;
     height: auto;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out; /* Fades in */
 }
 
+/* Button Styling */
 .hero .draw-button{
     font-family: 'FK Grotesk', sans-serif;
     font-weight: bold;
@@ -74,12 +78,13 @@ font-family: 'Miles', serif;
     font-size: 2rem;
 }
 
+/* Large Title */
 .title {
     font-size: 20rem;
     font-family: 'Miles', serif;
 }
 
-/*test*/
+/* Draw Button */
 .draw-button {
     padding: 10px 20px;
     font-size: 3rem;
@@ -88,26 +93,26 @@ font-family: 'Miles', serif;
     background-color: #4169e1;
     cursor: pointer;
     margin-top: 20px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; /* Smooth transition */
     border-radius: 39px;
     position: absolute;
-    z-index: 2;
+    z-index: 2; /* Puts above hero */
     top: 80%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* Moves button */
 }
 
 .draw-button:hover {
-    background-color: #2253e8;
+    background-color: #2253e8; /* Darker blue on hover */
     color: black;
 }
-
+/* Content Container */
 .content {
     padding: 50px;
     max-width: 800px;
     margin: 0 auto;
 }
-
+/* Heading Styles */
 h1{
     margin: 0;
     padding: 2rem;
@@ -119,10 +124,11 @@ h2 {
     font-weight: bold;
     padding: 20px;
 }
-
+/* Footer Styling */
 .footer {
     width: 100%;
 }
+/* Top Section of Footer */
 .footer-top {
     background-color: #4169e1;
     padding: 20px;
@@ -135,6 +141,7 @@ h2 {
 .footer-top div {
     margin-bottom: 20px;
 }
+/* Bottom Section of Footer */
 .footer-bottom {
     background-color: #C7DFF7;
     padding: 10px;
@@ -149,6 +156,8 @@ h2 {
 .footer-bottom a:hover {
     text-decoration: underline;
 }
+
+/* Vertical Carousel Wrapper */
 .vertical-carousel-wrapper {
     display: flex; /* Arrange them in a row */
     justify-content: space-between; /* Space them evenly */
@@ -156,6 +165,7 @@ h2 {
     width: 90%; /* Ensures it fits the screen properly */
     margin: 50px auto; /* Centers it with spacing */
 }
+/* Individual Vertical Carousel Container */
 .vertical-carousel-container {
     width: 200px; /* Adjust as needed */
     height: 500px; /* Defines the visible area */
@@ -166,6 +176,7 @@ h2 {
     display: flex;
 }
 
+/* Vertical Carousel Inner Styling */
 .vertical-carousel {
     display: flex;
     flex-direction: column;
@@ -179,6 +190,7 @@ h2 {
     display: block;
 }
 
+/* Horizontal Carousel */
 .carousel-container {
     overflow: hidden; 
     width: auto; 
@@ -191,7 +203,7 @@ h2 {
 .carousel {
     display: flex;
     gap: 20px;
-    white-space: nowrap; 
+    white-space: nowrap; /* Prevents wrapping */
     width: max-content; 
 }
 
@@ -214,9 +226,9 @@ h2 {
 }
 
 .header a:hover{
-    color:#b8860b;
+    color:#b8860b; /* Changes color on hover */
 }
-
+/* Sidebar Header */
 .sidebar h2{
     color: white;
     font-size: 2rem;
@@ -247,6 +259,8 @@ h2 {
     flex: 1;
     background-color: white;
 }
+
+/* Sidebar Styling */
 .sidebar {
     width: 290px;
     background-color: black;
@@ -259,16 +273,16 @@ h2 {
     height: 100vh;
     overflow: hidden;
 }
-
+/* Sidebar Input Fields */
 .sidebar input[type="color"],
 .sidebar input[type="number"] {
     width: 100%;
-    height: 100px;
+    height: 50px;
     margin-top: 8px;
     text-align: right;
     font-size: 2rem;
 }
-
+/* Sidebar Buttons */
 .sidebar button {
     width: 100%;
     height: 48px;
@@ -286,6 +300,7 @@ h2 {
 .sidebar .undo-btn {
     background-color: #800000;
 }
+/* Sidebar Icon Container */
 .sidebar .icon-container {
     display: flex;
     justify-content: space-between;
@@ -293,7 +308,7 @@ h2 {
     color: white;
 }
 .sidebar .icon-container i {
-    font-size: 24px;
+    font-size: 100px;
     cursor: pointer;
 }
 
